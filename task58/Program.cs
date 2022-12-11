@@ -15,13 +15,18 @@ Console.WriteLine();
 int[,] matrix3 = MultiplyMatix(matrix1, matrix2);
 PrintMatrix(matrix3);
 
+bool CheckMatrix(int[,] matr1, int[,] matr2)
+{
+    return (matr1.GetLength(0) == matr2.GetLength(1));
+}
+
 
 int[,] MultiplyMatix(int[,] matr1, int[,] matr2)
 {
     int rows = matr1.GetLength(0);
     int columns = matr2.GetLength(1);
     int[,] matr3 = new int[rows, columns];
-    if (matr1.GetLength(0) == matr2.GetLength(1))
+    if (CheckMatrix(matr1, matr2) == true)
     {
         for (int i = 0; i < matr1.GetLength(0); i++)
         {
@@ -32,19 +37,11 @@ int[,] MultiplyMatix(int[,] matr1, int[,] matr2)
                 {
                     matr3[i, j] += matr1[i, k] * matr2[k, j];
                 }
-            }
-
-
-
+            }    
         }
-
     }
     return matr3;
 }
-
-
-
-
 
 int[,] FillMatrix(int rows, int colums)
 {
